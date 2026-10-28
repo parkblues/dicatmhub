@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Dicatat! — Maganghub Mode</title>
+<link rel="preload" href="fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+<!-- App icon: browser tab, iOS home screen, Android/PWA install -->
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="mask-icon" href="dicatat-finance-icon.svg" color="#0070C9">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0070C9" id="meta-theme-light">
+<meta name="theme-color" content="#090b10" media="(prefers-color-scheme: dark)" id="meta-theme-dark">
+<meta name="application-name" content="Dicatat!">
+<meta name="apple-mobile-web-app-title" content="Dicatat!">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<!-- Styles are split by role. Order matters: keep it as is. -->
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/layout.css">
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/mobile.css">
+<link rel="stylesheet" href="css/maganghub.css">
+<link rel="stylesheet" href="css/mobile-maganghub.css">
+</head>
+<body>
+
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"><defs><g id="dicatat-mark"><path fill="currentColor" fill-rule="evenodd" d="M20 15H48A35 35 0 0 1 48 85H20A3 3 0 0 1 17 82V18A3 3 0 0 1 20 15ZM34.8284 48.1716L42.869 56.2122L61.0464 36.3029A4 4 0 0 1 66.9536 41.6971L45.9536 64.6971A4 4 0 0 1 40.1716 64.8284L29.1716 53.8284A4 4 0 0 1 34.8284 48.1716Z"/></g></defs></svg>
+
+<header class="hdr"><div class="in">
+<div class="top">
+  <div class="brand-cluster">
+    <div class="brand" onclick="go('dash')">
+      <div class="brand-mark" aria-hidden="true"><svg viewBox="17 15 66 70"><use href="#dicatat-mark"/></svg></div>
+      <div class="brand-txt">
+        <div style="display:flex;align-items:center;gap:6px">
+          <span class="brand-name">Dicatat!</span>
+          <span class="mob-view-pill" id="mob-view-pill"></span>
+        </div>
+        <span class="brand-sub" id="hdr-sub">Maganghub Mode · Secured Finance</span>
+      </div>
+    </div>
+    <span class="mh-hdr-sep" aria-hidden="true"></span>
+    <div class="mh-brand" onclick="mhChange()" id="mh-hdr-brand" title="Maganghub Class">
+      <img class="mh-logo on-light" src="MagangHub%20Logo%20-%20Black%20-%20zonalogo.com.svg" alt="Maganghub" decoding="async">
+      <img class="mh-logo on-dark" src="MagangHub%20Logo%20-%20White%20-%20zonalogo.com.svg" alt="" aria-hidden="true" decoding="async">
+      <span class="mh-cls-pill" id="mh-cls-pill"></span>
+    </div>
+  </div>
+  <div class="top-r">
+    <span class="user-dt" id="user"></span>
+    <button class="hdr-btn" onclick="go('rep')" id="hdr-rep-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      <span id="hdr-rep-lbl">Period Report</span>
+    </button>
+    <button class="hdr-btn pri" onclick="addTx()" id="hdr-add-btn">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      <span id="hdr-add-lbl">Add entry</span>
+    </button>
+  </div>
+</div>
+<div id="nav"></div>
+</div></header>
+<main class="in" id="main"></main>
+<footer class="app-foot" role="contentinfo">Free to Use • Developed by <b>Rey Florencio</b> (2026)<span class="pf-foot-priv" id="foot-priv"></span></footer>
+<div id="pf-gate" hidden></div>
+<div id="mh-gate" hidden onclick="if(event.target===this&&MH_CHANGING)mhCancelChange()"></div>
+<div id="mob-backdrop" onclick="closeMobSheet()"></div>
+<div id="mob-sheet" aria-label="All navigation menus"></div>
+<nav id="mob-bar" aria-label="Mobile bottom navigation"></nav>
+<dialog id="d" tabindex="-1"><form id="f"></form></dialog>
+<div id="dp-pop" hidden></div>
+<div id="t" hidden></div>
+
+<!-- Classic scripts share one global scope. Order matters: keep it as is. -->
+<script src="js/data.js"></script>
+<script src="js/core.js"></script>
+<script src="js/period.js"></script>
+<script src="js/datepicker.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/actions.js"></script>
+<script src="js/reports.js"></script>
+<script src="js/views.js"></script>
+<script src="js/app.js"></script>
+</body></html>
