@@ -234,6 +234,16 @@ function pfSave(){
   done();
   toast(L('pfSaved'));
 }
+function delProfile(){
+  if(!S.s.name&&!S.s.inst)return;
+  if(!confirm(L('pfDelConfirm')))return;
+  S.s.name='';S.s.inst='';
+  PF_EDIT=false;PF_D={name:'',inst:''};PF_LANG='';
+  const g=$('#pf-gate');
+  if(g)g.innerHTML='';
+  done();
+  toast(L('pfDeleted'));
+}
 
 const go=k=>{closeDP();closeMobSheet();V=k;render();scrollTo(0,0)};
 function render(){

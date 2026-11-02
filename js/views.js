@@ -521,7 +521,10 @@ set(){
             <h3>${esc(S.s.name||L('pfProfile'))}</h3>
             <p class="mute">${esc(S.s.name?S.s.inst:L('pfProfileSub'))}</p>
           </div>
-          <button type="button" class="btn g pf-set-btn" onclick="openProfile()">${esc(S.s.name?L('pfEdit'):L('pfSetup'))}</button>
+          <div class="pf-set-acts">
+            <button type="button" class="btn g pf-set-btn" onclick="openProfile()">${esc(S.s.name?L('pfEdit'):L('pfSetup'))}</button>
+            ${S.s.name||S.s.inst?`<button type="button" class="btn g pf-set-btn pf-del-btn" onclick="delProfile()" title="${esc(L('pfDel'))}" aria-label="${esc(L('pfDel'))}">${IC.del}<span>${esc(L('pfDel'))}</span></button>`:''}
+          </div>
         </div>
         <p class="pf-priv">
           <svg class="pf-priv-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2.5"/><path d="M8 11V7.5a4 4 0 0 1 8 0V11"/></svg>

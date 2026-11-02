@@ -2,7 +2,7 @@
    Strategy: precache the app shell, then serve stale-while-revalidate.
    The app opens offline; a new deploy is picked up on the load after it is fetched.
    Bump CACHE when you want old caches dropped immediately. */
-const CACHE = 'dicatat-shell-v13';
+const CACHE = 'dicatat-shell-v14';
 const SHELL = [
   './',
   'index.html',
